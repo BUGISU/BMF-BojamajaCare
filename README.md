@@ -1,26 +1,100 @@
-<div align='center'>
+# 🧓 보자마자 케어 (Bojamaja Care)
 
-## 프로젝트 소개
+<img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/4feeabf0-0fde-4766-a336-5c74ae619f4c" width="100%">
 
-<img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/4feeabf0-0fde-4766-a336-5c74ae619f4c">
+> 터치, 손동작, 전신 인식을 통합한 **시니어 맞춤형 인지훈련 및 건강관리 시스템**
 
-### 보자마자 케어(Bojamaja Care)
+---
 
+## 📌 프로젝트 개요
 
-보자마자 케어와 보자마자 브레인은 어르신들을 위해 터치 스크린과 동작인식을 활용해 치매예방, 뇌훈련, 근력강화 체조 등 체력증진 및 인지능력 향상을 도와주고 안면인식을 통한 편리한 사용자 구분 및 스케쥴관리 등을 제공하는 최상의 건강관리 서비스
-기본적으로 터치 게임 형식의 뇌훈련, 치매예방이 있고 립모션을 이용한 손게임 그리고 키넥트를 활용한 치매 예방체조로 구성 되어있습니다.
+**보자마자 케어**는 터치 기반 뇌훈련, Leap Motion 기반 손동작 게임, Kinect 기반 전신 체조 콘텐츠로 구성된 시니어 인지훈련 프로그램입니다.  
+안면 인식 기반 사용자 구분 및 스케줄 관리 기능을 통해 헬스케어 자동화에 기여합니다.
 
-<br>
+---
 
-## 작업 기간
-__2022.06 ~ 2022.12 ( 7개월 )__
+## 📅 개발 기간
 
-<br>
+**2022.06 ~ 2022.12 (7개월)**
 
-## 기술 스택
-__Unity3D, LeapMotion, Kinect__
+---
 
-__보자마자 브레인 사용자 메뉴얼__
+## 🛠️ 기술 스택
+
+- `Unity3D`
+- `Leap Motion Controller`
+- `Microsoft Kinect`
+- `C#`
+- `OpenCV (얼굴 인식)`
+
+---
+
+## 📂 주요 기능 구성
+
+### 📌 공통 시스템
+
+| 파일명 | 기능 |
+|--------|------|
+| `GameAppManager.cs` | 전체 게임 흐름 및 상태 제어 |
+| `CSVReader.cs`, `CSVFile.cs` | 게임 데이터 로딩 (CSV 기반) |
+| `ExerciseReportManager.cs` | 게임 결과 리포트 생성 |
+| `ChooseGame_UIManager.cs` | 게임 선택 메뉴 UI 제어 |
+| `SoundSetting.cs` | 효과음 및 배경음 설정 |
+
+---
+
+### ✋ Leap Motion 손 게임
+
+| 대표 스크립트 | 설명 |
+|----------------|------|
+| `GestureManager.cs` | 손 제스처 인식 제어 |
+| `FlagUpChecker.cs`, `FlagDownChecker.cs` | 청기백기 손 방향 판별 |
+| `StartButton.cs`, `AppManager.cs` | 게임 시작/관리 로직 |
+
+---
+
+### 🧠 치매예방 & 뇌훈련 (터치 기반)
+
+- 경로: `Touch/Dementia_Game/`, `Touch/Brain_Game/`
+- 각 게임별 `*_UIManager.cs`, `*_DataManager.cs` 구성
+
+#### 예시 게임 목록
+- 단어 색 맞추기
+- 사물-글자 연결
+- 미로 찾기
+- 음식값 계산
+- 틀린 그림 찾기
+- 숫자판 순서대로 터치하기
+
+---
+
+### 🕺 Kinect 체조 콘텐츠
+
+- 경로: `Gymnastics/Gymnasics_UIManager.cs`
+- 전신 동작 인식 기반 체조 미션 제공
+
+---
+
+## 🎮 콘텐츠 구성 요약
+
+### 뇌훈련 (7종)
+
+- 표 단어 터치 / 색상 매칭 / 숫자판 순서 / 반전 글자 등
+
+### 치매예방 (8종)
+
+- 속담-그림 연결 / 낱말 완성 / 숨은 그림 찾기 / 연속 숫자 계산 등
+
+### 손 게임 (5종)
+
+- 가위바위보(이기기/지기), 손가락 셈하기, 청기백기 등
+
+---
+
+## 📷 사용자 메뉴얼
+
+<details>
+<summary>📘 메뉴얼 이미지 보기</summary>
 
 <img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/672ef65a-786e-449b-ad47-57f96883d19f">
 <img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/5f96ec77-a999-4d98-b035-f47f8ef6cf38">
@@ -32,47 +106,19 @@ __보자마자 브레인 사용자 메뉴얼__
 <img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/d98243e8-3917-4ce5-8466-27c0d81b9f47">
 <img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/efc56528-6574-4e89-a572-354698c7a246">
 
-<br>
+</details>
 
-## 기여도
-<br>
+---
 
-<img src="https://github.com/JISUSAMA/JISUSAMA/assets/38304918/ca318894-26b7-4a3b-9738-a00d99e7d5a5">
-<br>
-<br>
+## 👨‍💻 기여 내용
 
-- 뇌 훈련 게임 7종, 치매 예방 게임 8종 컨텐츠 제작 및 구현
-- LipMotion 센서를 사용한 손동작 인식 게임
-- 키넥트를 사용한 전신운동 게임 유지보수 및 프로젝트 통합 작업
+- 전체 콘텐츠 UX 설계 및 시스템 구현
+- Kinect/Leap Motion 모듈 연동 및 최적화
+- CSV 기반 다국어 콘텐츠 구조화
+- 사용자 메뉴얼 UI 흐름 제작
 
-__뇌훈련__<br>
+---
 
-    01. 표를 보고 단어를 찾아 터치하기
-    02. 음식값 계산하기
-    03. 양손으로 다른 그림 그리기
-    04. 숫자판 순서대로 터치하기
-    05. 단어 색깔 맞추기
-    06. 반전 틀린 글자 맞추기
-    07. 거울 시계 시간 맞추기
+## 📩 문의
 
-__치매예방__ <br>
-
-    01. 빈칸에 글자를 채워 낱말 완성하기
-    02. 속담과 그림 연결하기
-    03. 사물과 글자 연결하기
-    04. 분수와 그림 연결하기
-    05. 숨은 그림 찾기
-    06. 틀린 그림 찾기
-    07. 미로 찾기
-    08. 연속 숫자 계산하기
-<br>
-
-__손게임__ <br>
-
-    01. 가위 바위 보 이기기
-    02. 가위 바위 보 지기
-    03. 손가락 셈 하기
-    04. 청기백기 게임
-    05. 사물과 글자 연결하기
-
-</div>
+프로젝트 관련 문의: **[j2su0218@gmail.com](mailto:j2su0218@gmail.com)**

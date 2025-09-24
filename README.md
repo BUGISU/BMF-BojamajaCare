@@ -5,16 +5,12 @@
 보자마자 케어는 Kinect, Leap Motion, 카메라 기반 얼굴 인식, 터치스크린 입력을 통합한 **실버 세대 맞춤형 뇌훈련·운동 시스템**입니다.
 사용자는 로그인 후 치매 예방 체조, 손 인식 게임, 터치 기반 인지 게임, 전신 운동을 수행하며 **운동 기록과 레포트**를 확인할 수 있습니다.
 
----
-
 ## 📅 개발 개요
 
 | 구분             | 내용                                                                                                       |
 | -------------- | -------------------------------------------------------------------------------------------------------- |
 | **개발 기간 / 역할** | **2022.03 \~ 2022.10 (총 8개월)**<br>팀 프로젝트 (개발인원 4명)<br>**UI/흐름 설계, 얼굴 인식 모듈, 터치 & 손 인식 게임, 운동 기록 시스템 개발** |
 | **플랫폼**        | Windows 기반 전용 키오스크                                                                                       |
-
----
 
 ## ⚙️ 기술 스택
 
@@ -28,7 +24,6 @@
 | 데이터 저장   | SQLite, PlayerPrefs           |
 | 영상/사운드   | UnityEngine.Video, AudioMixer |
 
----
 
 ## 🔍 코드 구조 (모듈별 설명)
 
@@ -45,8 +40,6 @@ if (FaceRecognizer.Instance.Match(userFace))
     UIManager.Instance.ShowDashboard();
 }
 ```
-
----
 
 ### 2. 터치 기반 뇌훈련 게임 (TouchGame)
 
@@ -68,8 +61,6 @@ public void OnCellClick(int index)
 }
 ```
 
----
-
 ### 3. 손 인식 게임 (Leap Motion)
 
 * Leap Motion Controller 활용
@@ -87,8 +78,6 @@ void Update()
 }
 ```
 
----
-
 ### 4. 전신 운동 게임 (Kinect)
 
 * 앉기/서기, 스트레칭 등 전신 동작을 Kinect로 인식
@@ -100,9 +89,6 @@ if (kinectData.Body.Joints[JointType.KneeRight].Position.Y < sitThreshold)
     ExerciseManager.Instance.CompleteAction("SitDown");
 }
 ```
-
----
-
 ### 5. 결과/레포트 시스템
 
 * SQLite에 훈련 점수 & 횟수 저장
@@ -112,9 +98,6 @@ if (kinectData.Body.Joints[JointType.KneeRight].Position.Y < sitThreshold)
 string query = "SELECT COUNT(*) FROM Training WHERE UserId=@id AND Month=@month";
 int trainingCount = db.ExecuteScalar<int>(query, new { id = userId, month = currentMonth });
 ```
-
----
-
 ## 📂 프로젝트 구조
 
 ```
@@ -138,20 +121,15 @@ BojamajaCare/
 │   └── ReportUI.cs             # 결과 확인 UI
 ```
 
----
-
-## 📸 스크린샷
-
-| 설명                 | 이미지                                            |
-| ------------------ | ---------------------------------------------- |
-| **메인 로그인 화면**      | <img src="Screenshots/슬라이드4.PNG" width="320"/> |
-| **치매 예방 체조**       | <img src="Screenshots/슬라이드5.PNG" width="320"/> |
-| **터치 기반 게임**       | <img src="Screenshots/슬라이드6.PNG" width="320"/> |
-| **손 인식 게임**        | <img src="Screenshots/슬라이드7.PNG" width="320"/> |
-| **전신 운동 (Kinect)** | <img src="Screenshots/슬라이드8.PNG" width="320"/> |
-| **운동 레포트**         | <img src="Screenshots/슬라이드9.PNG" width="320"/> |
-
----
+## 📸 스크린샷 & 개발 포인트
+| 화면                 | 설명                             | 이미지                                            | 개발 포인트                                                     |
+| ------------------ | ------------------------------ | ---------------------------------------------- | ---------------------------------------------------------- |
+| **메인 로그인 화면**      | 게스트 입장, 회원가입, 얼굴 인식 로그인 제공     | <img src="Screenshots/슬라이드4.PNG" width="320"/> | OpenCV + 카메라 모듈을 통한 **얼굴 인식 기반 로그인** 기능 구현, 회원 DB 연동       |
+| **치매 예방 체조**       | 로그인 없이도 간단하게 따라 할 수 있는 체조 콘텐츠  | <img src="Screenshots/슬라이드5.PNG" width="320"/> | VideoPlayer + AudioMixer를 활용해 **동작/음성 동기화 시스템** 개발         |
+| **터치 기반 게임**       | 숫자/도형/단어 맞추기 등 인지 훈련 콘텐츠       | <img src="Screenshots/슬라이드6.PNG" width="320"/> | Unity UI + EventSystem을 활용한 **터치 인식 로직**, 난이도별 문제 로딩 모듈 구현 |
+| **손 인식 게임**        | Leap Motion 기반, 손가락 제스처와 깃발 게임 | <img src="Screenshots/슬라이드7.PNG" width="320"/> | Leap Motion API로 **손가락 제스처 추적** 및 게임 내 액션 매핑 로직 개발         |
+| **전신 운동 (Kinect)** | 앉기/서기/스트레칭 판정 기능 포함            | <img src="Screenshots/슬라이드8.PNG" width="320"/> | Kinect Joint 데이터를 기반으로 **자세 인식 및 판정 알고리즘** 구현              |
+| **운동 레포트**         | 훈련 횟수·점수 기록을 그래프로 제공           | <img src="Screenshots/슬라이드9.PNG" width="320"/> | SQLite + PlayerPrefs로 **훈련 기록 저장/조회 기능** 구현, 그래프 시각화       |
 
 ## 🙋‍♂️ 담당 업무 및 기여도
 
